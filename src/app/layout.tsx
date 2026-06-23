@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.scss';
 import { Providers } from './providers';
+import { Navbar } from '@/components/navbar/Navbar';
+import { Container } from '@/components/container/Container';
 
 export const metadata: Metadata = {
   title: 'Mobile Store',
@@ -15,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          <main>
+            <Container>{children}</Container>
+          </main>
+        </Providers>
       </body>
     </html>
   );

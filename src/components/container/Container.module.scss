@@ -1,0 +1,15 @@
+@use '../../styles/_variables' as variables;
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-desktop);
+
+  @media (max-width: variables.$breakpoint-tablet) {
+    padding: 0 var(--spacing-container-tablet);
+  }
+
+  @media (max-width: variables.$breakpoint-mobile) {
+    padding: 0 var(--spacing-container-mobile);
+  }
+}
