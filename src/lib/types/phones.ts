@@ -1,0 +1,42 @@
+export interface PhoneItem {
+  id: string;
+  brand: string;
+  name: string;
+  basePrice: number;
+  imageUrl: string;
+}
+
+interface PhoneSpecs {
+  screen: string;
+  resolution: string;
+  processor: string;
+  mainCamera: string;
+  selfieCamera: string;
+  battery: string;
+  os: string;
+  screenRefreshRate: string;
+}
+
+interface PhoneColorOption {
+  name: string;
+  hexCode: string;
+  imageUrl: string;
+}
+
+interface PhoneStorageOption {
+  capacity: string;
+  price: number;
+}
+
+export interface PhoneDetail {
+  id: string;
+  brand: string;
+  name: string;
+  description: string;
+  basePrice: number;
+  rating: number;
+  specs: PhoneSpecs;
+  colorOptions: PhoneColorOption[];
+  storageOptions: PhoneStorageOption[];
+  similarProducts: PhoneItem[];
+}
