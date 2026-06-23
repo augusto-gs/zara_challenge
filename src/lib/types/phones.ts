@@ -40,3 +40,10 @@ export interface PhoneDetail {
   storageOptions: PhoneStorageOption[];
   similarProducts: PhoneItem[];
 }
+
+export type PhoneCartItem = Pick<PhoneItem, 'id' | 'name' | 'imageUrl'> & {
+  cartItemId: string;
+  capacity: string;
+  price: number;
+  colorName: string;
+};
