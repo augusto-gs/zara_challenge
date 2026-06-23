@@ -1,7 +1,8 @@
 :root {
   --color-primary: #000000;
   --color-secondary: #ccc;
-  --color-light: #e0e0e0;
+  --color-light: #fff; 
+  --color-gray: #e0e0e0;
   --color-error: #cc0000;
 
   --spacing-xs: 0.25rem;
@@ -12,10 +13,15 @@
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
 
+  --spacing-container-mobile: 1rem;
+  --spacing-container-tablet: 2.5rem; 
+  --spacing-container-desktop: 6.25rem; 
+
   --font-family-base: Helvetica, Arial, sans-serif;
   --font-size-xs: 0.625rem;
   --font-size-sm: 0.75rem;
   --font-size-md: 0.875rem;
+  --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
   --font-weight-regular: 300;
