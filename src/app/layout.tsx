@@ -17,15 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Container>
-          <Providers>
-            <Navbar />
-            <main>
-              {/* <Container>{children}</Container> */}
-              {children}
-            </main>
-          </Providers>
-        </Container>
+        <Providers>
+          <Navbar />
+          <main>
+            <Container>{children}</Container>
+          </main>
+        </Providers>
       </body>
     </html>
   );

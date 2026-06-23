@@ -4,7 +4,6 @@
   z-index: 100;
   background-color: var(--color-light);
   font-weight: var(--font-weight-regular);
-
 }
 
 .navbar__inner {
@@ -27,10 +26,6 @@
   gap: var(--spacing-xs);
   color: var(--color-primary);
   padding: var(--spacing-xs);
-}
-
-.navbar__cart_link--filled {
-  color: var(--color-primary);
 }
 
 .navbar__cart_count {

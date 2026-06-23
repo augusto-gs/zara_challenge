@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useCart } from '@/context/cart-context';
 import styles from './Navbar.module.scss';
+import { Container } from '../container/Container';
 
 export const Navbar = () => {
   const { totalItems } = useCart();
@@ -10,6 +11,7 @@ export const Navbar = () => {
 
   return (
     <header className={styles.navbar}>
+      <Container>
         <nav className={styles.navbar__inner}>
           <Link
             href="/"
@@ -20,13 +22,14 @@ export const Navbar = () => {
           </Link>
           <Link
             href="/cart"
-            className={`${styles.navbar__cart_link} ${totalItems > 0 ? styles['navbar__cart_link--filled'] : ''}`}
+            className={styles.navbar__cart_link}
             aria-label={`Cart with ${totalItems} items`}
           >
             {isFilled ? <CartIconFilled /> : <CartIconEmpty />}{' '}
             <span className={styles.navbar__cart_count}>{totalItems}</span>
           </Link>
         </nav>
+      </Container>
     </header>
   );
 };
@@ -74,6 +77,7 @@ const HomeIcon = () => (
 
 const CartIconFilled = (): React.ReactNode => (
   <svg
+    aria-label="Cart filled"
     width="13"
     height="16"
     viewBox="0 0 13 16"
@@ -91,6 +95,7 @@ const CartIconFilled = (): React.ReactNode => (
 
 const CartIconEmpty = (): React.ReactNode => (
   <svg
+    aria-label="Cart empty"
     width="13"
     height="16"
     viewBox="0 0 13 16"
