@@ -1,6 +1,12 @@
+@use '../../styles/variables' as variables;
+
 .search_bar {
   margin-bottom: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
+
+   @media (max-width: variables.$breakpoint-mobile) {
+    margin-top: var(--spacing-lg);
+  }
 }
 
 .search_bar__input_wrapper {
@@ -44,3 +50,5 @@
   color: var(--color-primary);
   margin-top: var(--spacing-sm);
 }
+
+
