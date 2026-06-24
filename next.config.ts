@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: 'http',
         hostname: 'prueba-tecnica-api-tienda-moviles.onrender.com',
       },
+      {
+        protocol: 'http',
+        hostname: 'prueba-tecnica-api-tienda-moviles.onrender.com',
+      },
     ],
   },
 };
