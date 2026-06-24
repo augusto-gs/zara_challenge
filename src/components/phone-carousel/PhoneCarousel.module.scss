@@ -1,0 +1,52 @@
+@use '../../styles/variables' as variables;
+
+.phone_carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.phone_carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &--dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+
+    a {
+      pointer-events: none;
+    }
+  }
+}
+
+.phone_carousel__item {
+  flex: 0 0 auto;
+  width: 280px;
+  scroll-snap-align: start;
+  border-right: 0.5px solid var(--color-gray-mid);
+
+  &:first-child {
+    border-left: 0.5px solid var(--color-gray-mid);
+  }
+}
+
+.phone_carousel__progress {
+  width: 100%;
+  background-color: var(--color-gray);
+  position: relative;
+}
+
+.phone_carousel__progress_bar {
+  position: absolute;
+  height: 1px;
+  background-color: var(--color-primary);
+  transition: width 150ms ease;
+  min-width: 10%;
+}
