@@ -2,7 +2,9 @@
   --color-primary: #000000;
   --color-secondary: #ccc;
   --color-light: #fff; 
-  --color-gray: #e0e0e0;
+  --color-gray: #AAAAAA;
+  --color-gray-text: #CCCCCC;
+  --color-gray-mid: #79736D;
   --color-error: #cc0000;
 
   --spacing-xs: 0.25rem;
@@ -25,6 +27,8 @@
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
   --font-weight-regular: 300;
+
+  --transition-base: 150ms ease;
 }
 
 $breakpoint-tablet: 834px;

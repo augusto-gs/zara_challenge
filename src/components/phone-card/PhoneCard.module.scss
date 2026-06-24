@@ -1,0 +1,140 @@
+// @use '../../styles/variables' as variables;
+
+// .phone_card {
+//   display: flex;
+//   flex-direction: column;
+//   padding: var(--spacing-md);
+//   color: var(--color-primary);
+//   gap: var(--spacing-lg);
+//   height: 100%;
+// }
+
+// .phone_card__image_wrapper {
+//   position: relative;
+//   width: 100%;
+//   aspect-ratio: 312 / 257;
+//   flex-shrink: 0;
+
+//   @media (max-width: variables.$breakpoint-tablet) {
+//     aspect-ratio: 345 / 290;
+//   }
+
+//   img {
+//     object-fit: contain;
+//   }
+// }
+
+// .phone_card__info {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   gap: var(--spacing-xs);
+// }
+
+// .phone_card__details {
+//   display: flex;
+//   flex-direction: column;
+//   gap: var(--spacing-xs);
+// }
+
+// .phone_card__brand {
+//   font-size: var(--font-size-xs);
+//   color: var(--color-gray);
+// }
+
+// .phone_card__name {
+//   font-size: var(--font-size-sm);
+// }
+
+// .phone_card__price {
+//   font-size: var(--font-size-sm);
+//   white-space: nowrap;
+// }
+
+@use '../../styles/variables' as variables;
+
+.phone_card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  color: var(--color-primary);
+  gap: var(--spacing-lg);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--transition-base);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-primary);
+    transform: translateY(100%);
+    transition: transform 300ms ease;
+    z-index: 0;
+  }
+
+  &:hover::after {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    color: var(--color-light);
+  }
+}
+
+.phone_card__image_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 312 / 257;
+  flex-shrink: 0;
+  z-index: 1;
+
+  @media (max-width: variables.$breakpoint-tablet) {
+    aspect-ratio: 345 / 290;
+  }
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.phone_card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--spacing-xs);
+  z-index: 1;
+}
+
+.phone_card__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  z-index: 1;
+}
+
+.phone_card__brand {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-mid);
+  transition: color var(--transition-base);
+
+
+
+  // .phone_card:hover & {
+  //   color: var(--color-white);
+  // }
+
+    .phone_card:hover & {
+    color: var(--color-gray-text);
+  }
+}
+
+.phone_card__name {
+  font-size: var(--font-size-sm);
+}
+
+.phone_card__price {
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
