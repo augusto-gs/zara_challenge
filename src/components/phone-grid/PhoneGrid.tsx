@@ -2,12 +2,12 @@ import type { PhoneItem } from '@/lib/types/phones';
 import { PhoneCard } from '@/components/phone-card/PhoneCard';
 import styles from './PhoneGrid.module.scss';
 
-interface PhoneGrid {
+export interface PhoneGridProps {
   phones: PhoneItem[];
   isLoading: boolean;
 }
 
-export const PhoneGrid = ({ phones, isLoading }: PhoneGrid) => {
+export const PhoneGrid = ({ phones, isLoading }: PhoneGridProps) => {
   if (isLoading) {
     return <p className={styles.phone_grid__message}>Loading...</p>;
   }

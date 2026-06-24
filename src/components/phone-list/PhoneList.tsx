@@ -6,43 +6,19 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { SearchBar } from '@/components/search-bar/SearchBar';
 import { PhoneGrid } from '@/components/phone-grid/PhoneGrid';
 
-interface PhoneList {
+interface PhoneListProps {
   initialPhones: PhoneItem[];
 }
 
-export const PhoneList = ({ initialPhones }: PhoneList) => {
+export const PhoneList = ({ initialPhones }: PhoneListProps) => {
   const [phones, setPhones] = useState<PhoneItem[]>(initialPhones);
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const debouncedSearch = useDebounce(search, 300);
 
-  // useEffect(() => {
-  //   if (debouncedSearch === '') {
-  //     setPhones(initialPhones);
-  //     return;
-  //   }
-
-  //   const fetchPhones = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await fetch(
-  //         `/api/phones?search=${encodeURIComponent(debouncedSearch)}`
-  //       );
-  //       const data = await response.json();
-  //       setPhones(data);
-  //     } catch {
-  //       setPhones([]);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchPhones();
-  // }, [debouncedSearch, initialPhones]);
-
-
   useEffect(() => {
     if (debouncedSearch === '') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting to initial phones when search is cleared is a valid synchronization pattern
       setPhones(initialPhones);
       return;
     }
@@ -69,7 +45,6 @@ export const PhoneList = ({ initialPhones }: PhoneList) => {
     fetchPhones();
   }, [debouncedSearch, initialPhones]);
 
-  
   return (
     <div>
       <SearchBar
