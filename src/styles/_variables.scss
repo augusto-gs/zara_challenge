@@ -1,8 +1,10 @@
 :root {
   --color-primary: #000000;
   --color-secondary: #ccc;
-  --color-light: #fff; 
-  --color-gray: #e0e0e0;
+  --color-light: #fff;
+  --color-gray: #aaaaaa;
+  --color-gray-text: #cccccc;
+  --color-gray-mid: #79736d;
   --color-error: #cc0000;
 
   --spacing-xs: 0.25rem;
@@ -14,8 +16,8 @@
   --spacing-3xl: 4rem;
 
   --spacing-container-mobile: 1rem;
-  --spacing-container-tablet: 2.5rem; 
-  --spacing-container-desktop: 6.25rem; 
+  --spacing-container-tablet: 2.5rem;
+  --spacing-container-desktop: 6.25rem;
 
   --font-family-base: Helvetica, Arial, sans-serif;
   --font-size-xs: 0.625rem;
@@ -25,6 +27,10 @@
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
   --font-weight-regular: 300;
+
+  --transition-base: 150ms ease;
+
+  --navbar-height: 80px;
 }
 
 $breakpoint-tablet: 834px;
