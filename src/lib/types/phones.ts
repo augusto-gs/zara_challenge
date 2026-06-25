@@ -6,7 +6,7 @@ export interface PhoneItem {
   imageUrl: string;
 }
 
-interface PhoneSpecs {
+export interface PhoneSpecs {
   screen: string;
   resolution: string;
   processor: string;
@@ -17,13 +17,13 @@ interface PhoneSpecs {
   screenRefreshRate: string;
 }
 
-interface PhoneColorOption {
+export interface PhoneColorOption {
   name: string;
   hexCode: string;
   imageUrl: string;
 }
 
-interface PhoneStorageOption {
+export interface PhoneStorageOption {
   capacity: string;
   price: number;
 }

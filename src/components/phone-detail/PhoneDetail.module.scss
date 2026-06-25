@@ -1,0 +1,161 @@
+@use '../../styles/variables' as variables;
+
+.phone_detail__content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.phone_detail__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-xl) 0;
+
+  @media (max-width: variables.$breakpoint-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.phone_detail__image_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 312 / 257;
+}
+
+.phone_detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.phone_detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm-md);
+}
+
+.phone_detail__name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+}
+
+.phone_detail__price {
+  font-size: var(--font-size-md);
+}
+
+.phone_detail__selectors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.phone_detail__selector_group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md-lg);
+}
+
+.phone_detail__selector_label {
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+}
+
+.phone_detail__storage_options {
+  display: flex;
+  // gap: var(--spacing-sm);
+  // flex-wrap: wrap;
+}
+
+.phone_detail__storage_btn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--color-gray-text);
+  background: transparent;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+
+  &--selected {
+    border: var(--border-size-md) solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+  }
+}
+
+.phone_detail__color_options {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-sm-md);
+}
+
+.phone_detail__color_btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: outline var(--transition-base);
+  outline: var(--border-size-md) solid var(--color-gray-text);
+  outline-offset: var(--border-offset-md);
+
+  &--selected {
+    outline: var(--border-size-md) solid var(--color-primary);
+    outline-offset: var(--border-offset-md);
+  }
+}
+
+.phone_detail__color_name {
+  font-size: var(--font-size-xs);
+}
+
+.phone_detail__add_btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-primary);
+  color: var(--color-light);
+  border: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: opacity var(--transition-base);
+
+  &:disabled {
+    opacity: 0.3;
+    color: #c2bfbc;
+    cursor: not-allowed;
+  }
+}
+
+.phone_detail__specs {
+  padding: var(--spacing-xl) 0;
+}
+
+.phone_detail__similar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xl) 0;
+  gap: var(--spacing-2xl)
+}
+
+.phone_detail__similar_title{
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-lg);
+}
+
+.phone_detail__back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.phone_detail__selector_group:nth-child(2) {
+  gap: 0;
+}
