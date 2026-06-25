@@ -11,6 +11,12 @@
   overflow-x: auto;
   scrollbar-width: none;
   cursor: grab;
+  user-select: none;
+
+  img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -19,10 +25,6 @@
   &--dragging {
     cursor: grabbing;
     scroll-behavior: auto;
-
-    a {
-      pointer-events: none;
-    }
   }
 }
 
