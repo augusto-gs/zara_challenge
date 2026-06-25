@@ -40,7 +40,7 @@ export const Cart = () => {
                   className={styles.cart__item_remove}
                   onClick={() => removeItem(item.cartItemId)}
                 >
-                  Eliminar
+                  Remove
                 </button>
               </div>
             </li>

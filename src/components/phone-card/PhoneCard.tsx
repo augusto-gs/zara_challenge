@@ -9,7 +9,11 @@ interface PhoneCardProps {
 
 export const PhoneCard = ({ phone }: PhoneCardProps) => {
   return (
-    <Link href={`/products/${phone.id}`} className={styles.phone_card}>
+    <Link
+      href={`/products/${phone.id}`}
+      className={styles.phone_card}
+      aria-label={`View ${phone.brand} ${phone.name} details`}
+    >
       <div className={styles.phone_card__image_wrapper}>
         <Image
           src={phone.imageUrl}
@@ -27,9 +31,7 @@ export const PhoneCard = ({ phone }: PhoneCardProps) => {
             {phone.name.toUpperCase()}
           </span>
         </div>
-        <span className={styles.phone_card__price}>
-          {phone.basePrice} EUR
-        </span>
+        <span className={styles.phone_card__price}>{phone.basePrice} EUR</span>
       </div>
     </Link>
   );

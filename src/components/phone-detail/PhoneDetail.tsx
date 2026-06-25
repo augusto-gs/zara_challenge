@@ -58,6 +58,7 @@ export const PhoneDetail = ({ phone }: PhoneDetailProps) => {
       <button
         className={styles.phone_detail__back}
         onClick={() => router.back()}
+        aria-label="Go back to previous page"
       >
         <svg
           width="6"
@@ -111,6 +112,10 @@ export const PhoneDetail = ({ phone }: PhoneDetailProps) => {
                           ? styles['phone_detail__storage_btn--selected']
                           : ''
                       }`}
+                      aria-pressed={
+                        selectedStorage?.capacity === option.capacity
+                      }
+                      aria-label={`Select ${option.capacity} storage option, ${option.price ? `${option.price} EUR` : ''}`}
                       onClick={() => setSelectedStorage(option)}
                     >
                       {option.capacity}
@@ -149,7 +154,7 @@ export const PhoneDetail = ({ phone }: PhoneDetailProps) => {
               onClick={handleAddToCart}
               disabled={!canAddToCart}
             >
-              AÑADIR
+              ADD TO CART
             </button>
           </div>
         </div>

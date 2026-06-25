@@ -71,7 +71,7 @@ describe('Given the PhoneDetail component', () => {
     test('Then the add button should be disabled', () => {
       render(<PhoneDetail phone={phoneDetailMock} />);
 
-      expect(screen.getByText('AÑADIR')).toBeDisabled();
+      expect(screen.getByText('ADD TO CART')).toBeDisabled();
     });
 
     test('Then it should render the specs component', () => {
@@ -131,7 +131,7 @@ describe('Given the PhoneDetail component', () => {
         })
       );
 
-      expect(screen.getByText('AÑADIR')).not.toBeDisabled();
+      expect(screen.getByText('ADD TO CART')).not.toBeDisabled();
     });
 
     test('Then clicking add should call addItem and redirect to cart', async () => {
@@ -147,7 +147,7 @@ describe('Given the PhoneDetail component', () => {
         })
       );
 
-      await userEvent.click(screen.getByText('AÑADIR'));
+      await userEvent.click(screen.getByText('ADD TO CART'));
 
       expect(mockAddItem).toHaveBeenCalledTimes(1);
       expect(mockPush).toHaveBeenCalledWith('/cart');
