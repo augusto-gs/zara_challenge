@@ -4,7 +4,7 @@ import { deduplicatePhones } from '@/lib/utils/utils';
 
 export default async function Home() {
   const phones = await getPhones();
-  const uniquePhones = deduplicatePhones(phones);
+  const uniquePhones = deduplicatePhones(phones).slice(0, 20);
 
   return <PhoneList initialPhones={uniquePhones} />;
 }

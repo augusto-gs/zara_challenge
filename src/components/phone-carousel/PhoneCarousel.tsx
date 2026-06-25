@@ -45,6 +45,20 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    const element = scrollRef.current;
+    if (!element) return;
+
+    const scrollAmount = 300;
+    if (event.key === 'ArrowLeft') {
+      element.scrollLeft -= scrollAmount;
+      event.preventDefault();
+    } else if (event.key === 'ArrowRight') {
+      element.scrollLeft += scrollAmount;
+      event.preventDefault();
+    }
+  };
+
   const handleMouseMove = (event: React.MouseEvent) => {
     if (!isDragging) return;
     const element = scrollRef.current;
@@ -67,6 +81,10 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
           isDragging ? styles['phone_carousel__track--dragging'] : ''
         }`}
         ref={scrollRef}
+        role="region"
+        aria-label="Similar phones carousel"
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
         onScroll={updateProgress}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}

@@ -164,7 +164,7 @@ describe('Given the Cart component', () => {
 
       render(<Cart />);
 
-      const removeButtons = screen.getAllByRole('button', { name: 'Eliminar' });
+      const removeButtons = screen.getAllByRole('button', { name: 'Remove' });
       await userEvent.click(removeButtons[0]);
 
       expect(mockRemoveItem).toHaveBeenCalledWith(mockItems[0].cartItemId);
