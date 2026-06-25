@@ -14,6 +14,7 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
   const [progress, setProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
+  const hasDragged = useRef(false);
 
   const updateProgress = () => {
     const element = scrollRef.current;
@@ -26,24 +27,32 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
     setProgress(currentProgress);
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (event: React.MouseEvent) => {
     const element = scrollRef.current;
     if (!element) return;
 
     setIsDragging(true);
     dragStart.current = {
-      x: e.pageX,
+      x: event.pageX,
       scrollLeft: element.scrollLeft,
     };
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleClick = (event: React.MouseEvent) => {
+    if (hasDragged.current) {
+      event.preventDefault();
+      hasDragged.current = false;
+    }
+  };
+
+  const handleMouseMove = (event: React.MouseEvent) => {
     if (!isDragging) return;
     const element = scrollRef.current;
     if (!element) return;
 
-    e.preventDefault();
-    const distance = e.pageX - dragStart.current.x;
+    event.preventDefault();
+    hasDragged.current = true;
+    const distance = event.pageX - dragStart.current.x;
     element.scrollLeft = dragStart.current.scrollLeft - distance;
   };
 
@@ -63,6 +72,8 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onClickCapture={handleClick}
+        onDragStart={(event) => event.preventDefault()}
       >
         {phones.map((phone) => (
           <div key={phone.id} className={styles.phone_carousel__item}>
