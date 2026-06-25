@@ -1,0 +1,18 @@
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.loading_bar {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  height: 1px;
+  background-color: var(--color-primary);
+  animation: progress 1s ease-out forwards;
+  z-index: 200;
+}
