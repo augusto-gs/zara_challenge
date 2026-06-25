@@ -70,7 +70,14 @@ export const PhoneCarousel = ({ phones }: PhoneCarouselProps) => {
           </div>
         ))}
       </div>
-      <div className={styles.phone_carousel__progress}>
+      <div
+        className={styles.phone_carousel__progress}
+        role="progressbar"
+        aria-valuenow={progress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Carousel progress"
+      >
         <div
           className={styles.phone_carousel__progress_bar}
           style={{ width: `${progress}%` }}

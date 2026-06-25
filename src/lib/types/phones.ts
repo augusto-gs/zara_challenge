@@ -6,7 +6,7 @@ export interface PhoneItem {
   imageUrl: string;
 }
 
-interface PhoneSpecs {
+export interface PhoneSpecs {
   screen: string;
   resolution: string;
   processor: string;
