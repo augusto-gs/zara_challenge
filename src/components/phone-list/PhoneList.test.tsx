@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PhoneList } from './PhoneList';
 import { phoneItemListMock } from '@/mocks/phoneItemMocks';
@@ -122,6 +122,47 @@ describe('Given the PhoneList component', () => {
           screen.getByText(`${phoneItemListMock.length} RESULTS`)
         ).toBeInTheDocument();
       });
+    });
+  });
+
+  describe('When a slow outdated response arrives after a newer search', () => {
+    test('Then it should ignore the outdated response', async () => {
+      const staleResults = [phoneItemListMock[1]];
+      const latestResults = [phoneItemListMock[0]];
+
+      let resolveStale: (value: unknown) => void = () => {};
+      const stalePromise = new Promise((resolve) => {
+        resolveStale = resolve;
+      });
+
+      (global.fetch as jest.Mock)
+        .mockReturnValueOnce(stalePromise)
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => latestResults,
+        });
+
+      render(<PhoneList initialPhones={phoneItemListMock} />);
+
+      const input = screen.getByRole('textbox', {
+        name: /search for a smartphone/i,
+      });
+
+      await userEvent.type(input, 'a');
+      await userEvent.type(input, 'b');
+
+      await waitFor(() => {
+        expect(screen.getByText(latestResults[0].name)).toBeInTheDocument();
+      });
+
+      await act(async () => {
+        resolveStale({ ok: true, json: async () => staleResults });
+        // Give the outdated response time to be processed by the component
+        await new Promise((resolve) => setTimeout(resolve, 0));
+      });
+
+      expect(screen.queryByText(staleResults[0].name)).not.toBeInTheDocument();
+      expect(screen.getByText(latestResults[0].name)).toBeInTheDocument();
     });
   });
 });
