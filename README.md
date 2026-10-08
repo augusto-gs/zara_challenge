@@ -29,7 +29,7 @@ A mobile phone store built as a technical challenge.
 
 ```bash
 git clone https://github.com/augusto-gs/zara_challenge/
-cd zara-challenge
+cd zara_challenge
 npm install
 ```
 

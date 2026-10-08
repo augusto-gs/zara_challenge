@@ -18,31 +18,43 @@ export const PhoneList = ({ initialPhones }: PhoneListProps) => {
 
   useEffect(() => {
     if (debouncedSearch === '') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting to initial phones when search is cleared is a valid synchronization pattern
+      /* eslint-disable react-hooks/set-state-in-effect -- resetting to initial phones when search is cleared is a valid synchronization pattern */
       setPhones(initialPhones);
+      setIsLoading(false);
+      /* eslint-enable react-hooks/set-state-in-effect */
       return;
     }
+
+    // Each search gets its own controller so a slow, outdated response can
+    // never overwrite the results of a more recent search.
+    const controller = new AbortController();
 
     const fetchPhones = async () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `/api/phones?search=${encodeURIComponent(debouncedSearch)}`
+          `/api/phones?search=${encodeURIComponent(debouncedSearch)}`,
+          { signal: controller.signal }
         );
         const data: PhoneItem[] = await response.json();
+        if (controller.signal.aborted) return;
+
         const uniquePhones = data.filter(
           (phone, index, self) =>
             index === self.findIndex((p) => p.id === phone.id)
         );
         setPhones(uniquePhones);
       } catch {
+        if (controller.signal.aborted) return;
         setPhones([]);
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) setIsLoading(false);
       }
     };
 
     fetchPhones();
+
+    return () => controller.abort();
   }, [debouncedSearch, initialPhones]);
 
   return (
